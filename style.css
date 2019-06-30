@@ -1,0 +1,12 @@
+body{
+    padding:10px;
+    margin: auto 0;
+}
+
+header h1 {
+    color: #7a7a67
+}
+
+header h1 span {
+    color: #2e2d06
+}
