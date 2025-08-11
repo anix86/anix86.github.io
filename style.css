@@ -377,6 +377,8 @@ body.dark-theme .social-media a:hover {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
+    width: 100%;
+    max-width: 1200px;
 }
 
 .blog-post,
@@ -470,10 +472,24 @@ body.dark-theme .card-content h3 a {
 }
 
 @media (max-width: 768px) {
+    html {
+        scroll-snap-type: none; /* Disable snapping on mobile for natural scrolling */
+    }
+
+    section {
+        height: auto; /* Allow sections to grow based on content */
+        min-height: 100vh; /* Ensure it still feels like a full page */
+        padding-top: 100px;
+        padding-bottom: 60px;
+    }
+
     .blog-post,
     .project-item {
         flex-direction: column;
         text-align: center;
+        width: 100%;
+        max-width: 400px; /* Constrain card width on mobile */
+        margin: 0 auto;
     }
 
     .card-image img {
