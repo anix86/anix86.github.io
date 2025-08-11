@@ -9,6 +9,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
 }
 
 body {
@@ -52,26 +53,19 @@ body.dark-theme {
 
 /* General Layout & Typography */
 main {
-    padding: 100px 5% 40px; /* Top padding for fixed nav */
-    max-width: 1200px;
-    margin: 0 auto;
+    /* Sections now control their own padding and layout */
 }
 
 section {
-    padding: 60px 0;
-    border-bottom: 1px solid;
-}
-
-body.light-theme section {
-    border-color: var(--border-color-light);
-}
-
-body.dark-theme section {
-    border-color: var(--border-color-dark);
-}
-
-section:last-of-type {
-    border-bottom: none;
+    height: 100vh;
+    padding: 0 5%; /* Remove vertical padding, keep horizontal */
+    scroll-snap-align: start;
+    scroll-margin-top: 80px; /* Use a safe value for header offset */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 h1, h2, h3 {
@@ -518,6 +512,13 @@ footer {
     text-align: center;
     padding: 40px 5%;
     margin-top: 20px;
+    scroll-snap-align: start;
+    scroll-margin-top: 80px; /* Also apply offset here */
+    min-height: 50vh; /* Give it a substantial height to feel like a final section */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 body.light-theme footer {
