@@ -485,15 +485,19 @@ body.dark-theme .card-content h3 a {
 
     .blog-post,
     .project-item {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: row;
+        text-align: left;
         width: 100%;
-        max-width: 400px; /* Constrain card width on mobile */
+        max-width: 450px; /* Adjust max width */
         margin: 0 auto;
+        padding: 15px;
+        gap: 15px;
     }
 
     .card-image img {
-        margin-bottom: 15px;
+        width: 80px;
+        height: 80px;
+        margin-bottom: 0;
     }
 
     .nav-links {
