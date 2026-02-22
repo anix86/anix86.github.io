@@ -2,11 +2,11 @@
 title: "Understanding Static Generation"
 date: "2025-04-06"
 excerpt: "Exploring static site generation in Next.js and its benefits."
-author: "Anix86"
+author: "Aneesh Nair"
 tags: ["nextjs", "ssg", "performance"]
 featured: true
 recommended: false
-coverImage: "/images/static-generation.jpg"
+coverImage: "https://picsum.photos/seed/staticgen/400/300"
 readingTime: "6 min read"
 ---
 

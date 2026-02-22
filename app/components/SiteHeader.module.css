@@ -1,0 +1,48 @@
+.header {
+  padding: 1.5rem 1rem 1rem;
+  background: transparent;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: fit-content;
+  margin: 0 auto;
+  text-decoration: none;
+  color: #222;
+}
+
+.brand:hover {
+  text-decoration: none;
+  color: #0070f3;
+}
+
+.avatar {
+  border-radius: 50%;
+  display: block;
+  flex-shrink: 0;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.nav {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.navLink {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #555;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.navLink:hover {
+  color: #111;
+}

@@ -2,11 +2,11 @@
 title: "Deploying with Vercel"
 date: "2025-05-10"
 excerpt: "How to deploy Next.js apps quickly using Vercel."
-author: "Anix86"
+author: "Aneesh Nair"
 tags: ["deployment", "vercel", "nextjs"]
 featured: false
 recommended: true
-coverImage: "/images/vercel-deploy.jpg"
+coverImage: "https://picsum.photos/seed/vercel/400/300"
 readingTime: "4 min read"
 ---
 

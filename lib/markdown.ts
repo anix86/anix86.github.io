@@ -3,6 +3,7 @@ import path from 'path'
 import matter from 'gray-matter'
 import { remark } from 'remark'
 import html from 'remark-html'
+import readingTime from 'reading-time'
 
 const postsDirectory = path.join(process.cwd(), 'content/posts')
 
@@ -46,7 +47,7 @@ export function getPostBySlug(slug: string): PostData {
     featured: data.featured || false,
     recommended: data.recommended || false,
     coverImage: data.coverImage,
-    readingTime: data.readingTime,
+    readingTime: readingTime(content).text,
     content
   }
 }
@@ -55,12 +56,17 @@ export async function getPostWithHtml(slug: string): Promise<PostData> {
   const post = getPostBySlug(slug)
   
   const processedContent = await remark()
-    .use(html)
+    .use(html, { sanitize: false })
     .process(post.content || '')
-  
+
+  // Strip the leading <h1> from the rendered HTML to avoid a duplicate h1
+  // alongside the one already rendered by the React page component.
+  const rawHtml = processedContent.toString()
+  const htmlContent = rawHtml.replace(/^\s*<h1[^>]*>.*?<\/h1>\s*/i, '')
+
   return {
     ...post,
-    htmlContent: processedContent.toString()
+    htmlContent
   }
 }
 

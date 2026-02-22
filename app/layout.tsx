@@ -5,32 +5,40 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   metadataBase: new URL('https://anix86.github.io/myblog'),
   title: {
-    default: 'Anix86 - Developer Portfolio',
-    template: '%s | Anix86'
+    default: 'Aneesh Nair - Developer Portfolio',
+    template: '%s | Aneesh Nair'
   },
-  description: 'Personal portfolio and blog of Anix86, a passionate web developer specializing in modern web technologies.',
+  description: 'Personal portfolio and blog of Aneesh Nair, a passionate web developer specializing in modern web technologies.',
   keywords: ['developer', 'portfolio', 'blog', 'web development', 'Next.js', 'React'],
-  authors: [{ name: 'Anix86' }],
-  creator: 'Anix86',
+  authors: [{ name: 'Aneesh Nair' }],
+  creator: 'Aneesh Nair',
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://anix86.github.io/myblog',
-    siteName: 'Anix86 Portfolio',
-    title: 'Anix86 - Developer Portfolio',
-    description: 'Personal portfolio and blog of Anix86',
+    siteName: 'Aneesh Nair Portfolio',
+    title: 'Aneesh Nair - Developer Portfolio',
+    description: 'Personal portfolio and blog of Aneesh Nair',
     images: [{
-      url: '/me.jpg',
-      width: 120,
-      height: 120,
-      alt: 'Anix86 Profile Photo'
+      url: '/aneesh.jpeg',
+      width: 1200,
+      height: 630,
+      alt: 'Aneesh Nair Profile Photo'
     }]
   },
   twitter: {
-    card: 'summary',
-    title: 'Anix86 - Developer Portfolio',
-    description: 'Personal portfolio and blog of Anix86',
-    images: ['/me.jpg']
+    card: 'summary_large_image',
+    title: 'Aneesh Nair - Developer Portfolio',
+    description: 'Personal portfolio and blog of Aneesh Nair',
+    images: ['/aneesh.jpeg']
+  },
+  icons: {
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
+  },
+  alternates: {
+    canonical: 'https://anix86.github.io/myblog',
   },
   robots: {
     index: true,
@@ -49,10 +57,27 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/me.jpg" type="image/jpeg" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="preconnect" href="https://picsum.photos" />
       </head>
-      <body>{children}</body>
+      <body>
+        <div className="site-wrapper">
+          <main className="site-main">{children}</main>
+          <footer className="site-footer">
+            <p>&copy; {new Date().getFullYear()} Aneesh Nair. All rights reserved.</p>
+            <p>
+              <a href="https://github.com/anix86" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <span className="footer-sep">·</span>
+              <a href="https://x.com/anix86" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+              <span className="footer-sep">·</span>
+              <a href="https://linkedin.com/in/anix86" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <span className="footer-sep">·</span>
+              <a href="/blog">Blog</a>
+              <span className="footer-sep">·</span>
+              <a href="/gallery">Gallery</a>
+            </p>
+          </footer>
+        </div>
+      </body>
     </html>
   )
 }

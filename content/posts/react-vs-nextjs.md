@@ -2,11 +2,11 @@
 title: "React vs Next.js"
 date: "2025-06-15"
 excerpt: "Comparing the pros and cons of React vs Next.js for web development."
-author: "Anix86"
+author: "Aneesh Nair"
 tags: ["react", "nextjs", "comparison"]
 featured: true
 recommended: false
-coverImage: "/images/react-nextjs.jpg"
+coverImage: "https://picsum.photos/seed/reactnext/400/300"
 readingTime: "7 min read"
 ---
 

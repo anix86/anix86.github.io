@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://anix86.github.io/myblog/sitemap.xml

@@ -1,0 +1,147 @@
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #eee;
+}
+
+.heroImage {
+  margin-right: 2rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 120px;
+  height: 120px;
+}
+
+.profileImg {
+  display: block;
+  object-fit: cover;
+}
+
+.heroDetails {
+  flex: 1;
+}
+
+.heroDetails h1 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.heroDetails p {
+  line-height: 1.6;
+  color: #555;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.navLinks a {
+  color: #0070f3;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.navLinks a:hover {
+  text-decoration: underline;
+}
+
+.pipe {
+  color: #ccc;
+  user-select: none;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #555;
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.socialLink:hover {
+  color: #0070f3;
+  border-color: #0070f3;
+  text-decoration: none;
+}
+
+.section {
+  margin: 2rem 0;
+}
+
+.section h2 {
+  margin-bottom: 1rem;
+}
+
+.date {
+  color: #aaa;
+  font-size: 0.9em;
+  margin-left: 0.5em;
+}
+
+.viewMore {
+  display: inline-block;
+  margin-top: 0.8em;
+  color: #0070f3;
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .hero {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .heroImage {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+
+  .heroDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .heroDetails h1 {
+    text-align: center;
+  }
+
+  .heroDetails p {
+    text-align: left;
+    width: 100%;
+  }
+
+  .navLinks {
+    justify-content: center;
+  }
+
+  .socialLinks {
+    justify-content: center;
+  }
+}

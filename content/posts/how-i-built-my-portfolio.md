@@ -2,11 +2,11 @@
 title: "How I built my portfolio"
 date: "2025-07-20"
 excerpt: "Step-by-step guide to building my portfolio site with Next.js."
-author: "Anix86"
+author: "Aneesh Nair"
 tags: ["nextjs", "portfolio", "web development"]
 featured: false
 recommended: true
-coverImage: "/images/portfolio-cover.jpg"
+coverImage: "https://picsum.photos/seed/portfolio/400/300"
 readingTime: "5 min read"
 ---
 

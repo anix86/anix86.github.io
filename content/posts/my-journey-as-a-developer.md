@@ -2,11 +2,11 @@
 title: "My Journey as a Developer"
 date: "2025-03-01"
 excerpt: "Sharing my story and growth as a self-taught developer."
-author: "Anix86"
+author: "Aneesh Nair"
 tags: ["personal", "career", "learning"]
 featured: false
 recommended: true
-coverImage: "/images/developer-journey.jpg"
+coverImage: "https://picsum.photos/seed/journey/400/300"
 readingTime: "8 min read"
 ---
 

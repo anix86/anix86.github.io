@@ -1,6 +1,29 @@
-"use client"
 import Image from 'next/image'
 import Link from 'next/link'
+import type { Metadata } from 'next'
+import styles from './home.module.css'
+import { JsonLd } from './components/JsonLd'
+
+export const metadata: Metadata = {
+  title: 'Aneesh Nair - Developer Portfolio',
+  description: 'Personal portfolio and blog of Aneesh Nair, a passionate web developer specializing in modern web technologies.',
+  alternates: {
+    canonical: 'https://anix86.github.io/myblog',
+  },
+  openGraph: {
+    type: 'website',
+    url: 'https://anix86.github.io/myblog',
+    title: 'Aneesh Nair - Developer Portfolio',
+    description: 'Personal portfolio and blog of Aneesh Nair, a passionate web developer specializing in modern web technologies.',
+    images: [{ url: '/aneesh.jpeg', width: 1200, height: 630, alt: 'Aneesh Nair' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Aneesh Nair - Developer Portfolio',
+    description: 'Personal portfolio and blog of Aneesh Nair, a passionate web developer specializing in modern web technologies.',
+    images: ['/aneesh.jpeg'],
+  },
+}
 
 const posts = [
   {
@@ -30,6 +53,36 @@ const posts = [
   },
 ]
 
+const socialLinks = [
+  {
+    name: 'GitHub',
+    url: 'https://github.com/anix86',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+      </svg>
+    ),
+  },
+  {
+    name: 'Twitter / X',
+    url: 'https://x.com/anix86',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+      </svg>
+    ),
+  },
+  {
+    name: 'LinkedIn',
+    url: 'https://linkedin.com/in/anix86',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+      </svg>
+    ),
+  },
+]
+
 const projects = [
   {
     name: 'Project Alpha',
@@ -44,112 +97,77 @@ const projects = [
 ]
 
 export default function Home() {
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Aneesh Nair Portfolio',
+    url: 'https://anix86.github.io/myblog',
+    description: 'Personal portfolio and blog of Aneesh Nair, a passionate web developer.',
+  }
+
+  const personSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Aneesh Nair',
+    url: 'https://anix86.github.io/myblog',
+    image: 'https://anix86.github.io/myblog/aneesh.jpeg',
+    sameAs: [
+      'https://github.com/anix86',
+      'https://x.com/anix86',
+      'https://linkedin.com/in/anix86',
+    ],
+    jobTitle: 'Web Developer',
+  }
+
   return (
-    <div className="container">
-      <section className="hero">
-        <div className="hero-image">
-          <Image src="/me.jpg" alt="My photo" width={120} height={120} className="profile-img" />
-        </div>
-        <div className="hero-details">
-          <h1>Anix86</h1>
-          <p>
-            Hi, I'm Anix! A passionate developer specializing in web technologies. I love building beautiful and fast web applications, writing about tech, and sharing my projects with the world.
-          </p>
-        </div>
-      </section>
-      <section className="section">
-        <h2>Latest Blog Posts</h2>
-        <ul>
-          {posts.map((post) => (
-            <li key={post.slug}>
-              <Link href={`/blog/${post.slug}`}>{post.title}</Link> <span className="date">{post.date}</span>
-            </li>
-          ))}
-        </ul>
-        <Link href="/blog" className="view-more">View More</Link>
-      </section>
-      <section className="section">
-        <h2>Recent Projects</h2>
-        <ul>
-          {projects.map((project) => (
-            <li key={project.name}>
-              <a href={project.link} target="_blank" rel="noopener noreferrer">{project.name}</a>: {project.description}
-            </li>
-          ))}
-        </ul>
-      </section>
-      <footer className="footer">
-        &copy; {new Date().getFullYear()} Anix86. All rights reserved.
-      </footer>
-      <style jsx>{`
-        .container {
-          max-width: 700px;
-          margin: 0 auto;
-          padding: 1rem;
-        }
-        .hero {
-          display: flex;
-          align-items: center;
-          padding: 2rem 0;
-          margin-bottom: 2rem;
-          border-bottom: 1px solid #eee;
-        }
-        .hero-image {
-          margin-right: 2rem;
-          flex-shrink: 0;
-        }
-        .profile-img {
-          border-radius: 50%;
-          display: block;
-        }
-        .hero-details {
-          flex: 1;
-        }
-        .hero-details h1 {
-          margin-top: 0;
-          margin-bottom: 1rem;
-        }
-        .hero-details p {
-          line-height: 1.6;
-          color: #555;
-        }
-        .section {
-          margin: 2rem 0;
-        }
-        .section h2 {
-          margin-bottom: 1rem;
-        }
-        .date {
-          color: #aaa;
-          font-size: 0.9em;
-          margin-left: 0.5em;
-        }
-        .view-more {
-          display: inline-block;
-          margin-top: 0.8em;
-          color: #0070f3;
-          text-decoration: underline;
-        }
-        .footer {
-          text-align: center;
-          padding: 2rem 0 1rem 0;
-          font-size: 0.9em;
-          color: #666;
-          border-top: 1px solid #eee;
-          margin-top: 3rem;
-        }
-        
-        @media (max-width: 600px) {
-          .hero {
-            flex-direction: column;
-            text-align: center;
-          }
-          .hero-image {
-            margin-right: 0;
-            margin-bottom: 1rem;
-          }
-        }
-      `}</style>
-    </div>
+    <>
+      <JsonLd data={websiteSchema} />
+      <JsonLd data={personSchema} />
+      <div className={styles.container}>
+        <section className={styles.hero}>
+          <div className={styles.heroImage}>
+            <Image src="/aneesh.jpeg" alt="Aneesh Nair" width={120} height={120} className={styles.profileImg} priority />
+          </div>
+          <div className={styles.heroDetails}>
+            <h1>Aneesh Nair</h1>
+            <p>
+              Hi, I&apos;m Anix! A passionate developer specializing in web technologies. I love building beautiful and fast web applications, writing about tech, and sharing my projects with the world.
+            </p>
+            <p className={styles.navLinks}>
+              <a href="/blog">Blog</a>
+              <span className={styles.pipe}>|</span>
+              <a href="/gallery">Gallery</a>
+            </p>
+            <div className={styles.socialLinks}>
+              {socialLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={link.name}
+                  className={styles.socialLink}
+                >
+                  {link.icon}
+                  <span>{link.name}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+        <section className={styles.section}>
+          <h2>Latest Blog Posts</h2>
+          <ul>
+            {posts.map((post) => (
+              <li key={post.slug}>
+                <Link href={`/blog/${post.slug}`}>{post.title}</Link>{' '}
+                <span className={styles.date}>{post.date}</span>
+              </li>
+            ))}
+          </ul>
+          <Link href="/blog" className={styles.viewMore}>View More</Link>
+        </section>
+      </div>
+    </>
   )
 }
