@@ -4,16 +4,19 @@
   padding: 1rem;
 }
 
-.hero {
+/* ── About row: image left, content right ─────────────── */
+.aboutSection {
   display: flex;
-  align-items: center;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 2rem;
   padding: 2rem 0;
   margin-bottom: 2rem;
   border-bottom: 1px solid #eee;
+  width: 100%;
 }
 
-.heroImage {
-  margin-right: 2rem;
+.aboutImage {
   flex-shrink: 0;
   border-radius: 50%;
   overflow: hidden;
@@ -26,18 +29,14 @@
   object-fit: cover;
 }
 
-.heroDetails {
+.aboutContent {
   flex: 1;
 }
 
-.heroDetails h1 {
-  margin-top: 0;
-  margin-bottom: 1rem;
-}
-
-.heroDetails p {
+.aboutContent p {
   line-height: 1.6;
   color: #555;
+  margin: 0 0 0.75rem;
 }
 
 .navLinks {
@@ -110,31 +109,49 @@
   text-decoration: underline;
 }
 
+.yearGroup {
+  margin-bottom: 1.5rem;
+}
+
+.yearLabel {
+  font-size: 0.8rem;
+  color: #bbb;
+  font-weight: 400;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.yearPosts {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.yearPosts li {
+  margin: 0;
+}
+
+.yearPosts a {
+  font-size: 0.95rem;
+  color: #0070f3;
+  text-decoration: none;
+}
+
+.yearPosts a:hover {
+  color: #0070f3;
+}
+
 @media (max-width: 600px) {
-  .hero {
+  .aboutSection {
     flex-direction: column;
     align-items: center;
   }
 
-  .heroImage {
-    margin-right: 0;
-    margin-bottom: 1rem;
-  }
-
-  .heroDetails {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-
-  .heroDetails h1 {
+  .aboutContent {
     text-align: center;
-  }
-
-  .heroDetails p {
-    text-align: left;
-    width: 100%;
   }
 
   .navLinks {

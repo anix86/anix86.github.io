@@ -3,7 +3,6 @@ import Image from 'next/image'
 import type { Metadata } from 'next'
 import { getAllPosts } from '@/lib/markdown'
 import styles from './blog.module.css'
-import SiteHeader from '../components/SiteHeader'
 import { JsonLd } from '../components/JsonLd'
 
 export const metadata: Metadata = {
@@ -42,7 +41,6 @@ export default function Blog() {
   return (
     <>
       <JsonLd data={breadcrumbSchema} />
-      <SiteHeader />
       <div className={styles.container}>
         <h1>Blog Posts</h1>
         <ul className={styles.postList}>

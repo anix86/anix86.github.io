@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 import React from 'react'
+import SiteHeader from './components/SiteHeader'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -61,6 +62,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <div className="site-wrapper">
+          <SiteHeader />
           <main className="site-main">{children}</main>
           <footer className="site-footer">
             <p>&copy; {new Date().getFullYear()} Aneesh Nair. All rights reserved.</p>
@@ -70,6 +72,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <a href="https://x.com/anix86" target="_blank" rel="noopener noreferrer">Twitter / X</a>
               <span className="footer-sep">·</span>
               <a href="https://linkedin.com/in/anix86" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <span className="footer-sep">·</span>
+              <a href="/about">About</a>
               <span className="footer-sep">·</span>
               <a href="/blog">Blog</a>
               <span className="footer-sep">·</span>

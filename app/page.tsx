@@ -3,6 +3,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import styles from './home.module.css'
 import { JsonLd } from './components/JsonLd'
+import { getAllPosts } from '@/lib/markdown'
 
 export const metadata: Metadata = {
   title: 'Aneesh Nair - Developer Portfolio',
@@ -25,33 +26,7 @@ export const metadata: Metadata = {
   },
 }
 
-const posts = [
-  {
-    title: 'How I built my portfolio',
-    slug: 'how-i-built-my-portfolio',
-    date: '2025-07-20',
-  },
-  {
-    title: 'React vs Next.js',
-    slug: 'react-vs-nextjs',
-    date: '2025-06-15',
-  },
-  {
-    title: 'Deploying with Vercel',
-    slug: 'deploying-with-vercel',
-    date: '2025-05-10',
-  },
-  {
-    title: 'Understanding Static Generation',
-    slug: 'understanding-static-generation',
-    date: '2025-04-06',
-  },
-  {
-    title: 'My Journey as a Developer',
-    slug: 'my-journey-as-a-developer',
-    date: '2025-03-01',
-  },
-]
+
 
 const socialLinks = [
   {
@@ -97,6 +72,17 @@ const projects = [
 ]
 
 export default function Home() {
+  const posts = getAllPosts()
+
+  const postsByYear = posts.reduce<Record<string, typeof posts>>((acc, post) => {
+    const year = post.date.slice(0, 4)
+    if (!acc[year]) acc[year] = []
+    acc[year].push(post)
+    return acc
+  }, {})
+
+  const years = Object.keys(postsByYear).sort((a, b) => Number(b) - Number(a))
+
   const websiteSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
@@ -124,16 +110,19 @@ export default function Home() {
       <JsonLd data={websiteSchema} />
       <JsonLd data={personSchema} />
       <div className={styles.container}>
-        <section className={styles.hero}>
-          <div className={styles.heroImage}>
+        <section className={styles.aboutSection}>
+          <div className={styles.aboutImage}>
             <Image src="/aneesh.jpeg" alt="Aneesh Nair" width={120} height={120} className={styles.profileImg} priority />
           </div>
-          <div className={styles.heroDetails}>
-            <h1>Aneesh Nair</h1>
+          <div className={styles.aboutContent}>
             <p>
-              Hi, I&apos;m Anix! A passionate developer specializing in web technologies. I love building beautiful and fast web applications, writing about tech, and sharing my projects with the world.
+              Hi, I&apos;m Aneesh Nair — a lifelong learner, currently deep-diving into the world of Artificial Intelligence. 
+              This blog is my personal journal and resource for anyone else trying to keep up with the fast-moving AI space.
+              If you love discovering new tech, you&apos;re in the right place.
             </p>
             <p className={styles.navLinks}>
+              <a href="/about">About</a>
+              <span className={styles.pipe}>|</span>
               <a href="/blog">Blog</a>
               <span className={styles.pipe}>|</span>
               <a href="/gallery">Gallery</a>
@@ -156,16 +145,20 @@ export default function Home() {
           </div>
         </section>
         <section className={styles.section}>
-          <h2>Latest Blog Posts</h2>
-          <ul>
-            {posts.map((post) => (
-              <li key={post.slug}>
-                <Link href={`/blog/${post.slug}`}>{post.title}</Link>{' '}
-                <span className={styles.date}>{post.date}</span>
-              </li>
-            ))}
-          </ul>
-          <Link href="/blog" className={styles.viewMore}>View More</Link>
+          <h2>Recent Posts...</h2>
+          {years.map(year => (
+            <div key={year} className={styles.yearGroup}>
+              <span className={styles.yearLabel}>{year}</span>
+              <ul className={styles.yearPosts}>
+                {postsByYear[year].map(post => (
+                  <li key={post.slug}>
+                    <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+          <Link href="/blog" className={styles.viewMore}>View all posts</Link>
         </section>
       </div>
     </>

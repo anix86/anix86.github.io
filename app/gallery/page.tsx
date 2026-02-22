@@ -1,13 +1,11 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import SiteHeader from '../components/SiteHeader'
 import { photos } from '@/lib/gallery'
 import styles from './gallery.module.css'
 
 export default function GalleryPage() {
   return (
     <>
-      <SiteHeader />
       <div className={styles.container}>
         <h1 className={styles.heading}>Gallery</h1>
         <div className={styles.grid}>

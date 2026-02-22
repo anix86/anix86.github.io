@@ -3,7 +3,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import type { Metadata } from 'next'
 import { photos, getPhotoDetail } from '@/lib/gallery'
-import SiteHeader from '../../components/SiteHeader'
 import styles from './photo.module.css'
 
 export function generateStaticParams() {
@@ -37,7 +36,6 @@ export default async function PhotoPage({
 
   return (
     <>
-      <SiteHeader />
       <div className={styles.container}>
         <Link href="/gallery" className={styles.back}>
           ← Back to Gallery

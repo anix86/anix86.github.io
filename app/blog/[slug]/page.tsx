@@ -2,7 +2,6 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { getAllPostSlugs, getPostWithHtml } from '@/lib/markdown'
 import styles from './blogpost.module.css'
-import SiteHeader from '../../components/SiteHeader'
 import { JsonLd } from '../../components/JsonLd'
 
 export async function generateStaticParams() {
@@ -80,7 +79,6 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
       <>
         <JsonLd data={articleSchema} />
         <JsonLd data={breadcrumbSchema} />
-        <SiteHeader />
         <article className={styles.blogPostContainer}>
           <header className={styles.postHeader}>
             <h1>{post.title}</h1>
